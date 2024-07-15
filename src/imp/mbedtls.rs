@@ -1,4 +1,4 @@
-extern crate mbedtls;
+extern crate esp_mbedtls as mbedtls;
 
 use self::mbedtls::alloc::{Box as MbedtlsBox, List as MbedtlsList};
 use self::mbedtls::hash::{Md, Type as MdType};
