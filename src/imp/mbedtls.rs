@@ -3,7 +3,7 @@ extern crate mbedtls;
 use self::mbedtls::alloc::{Box as MbedtlsBox, List as MbedtlsList};
 use self::mbedtls::hash::{Md, Type as MdType};
 use self::mbedtls::pk::Pk;
-use self::mbedtls::rng::{CtrDrbg, OsEntropy as Rdseed};
+use self::mbedtls::rng::{CtrDrbg, OsEntropy};
 #[cfg(feature = "alpn")]
 use self::mbedtls::ssl::config::NullTerminatedStrList;
 use self::mbedtls::ssl::config::{Endpoint, Preset, Transport};
@@ -16,7 +16,7 @@ use std::error;
 use std::fmt::{self, Debug};
 use std::io;
 use std::sync::Arc;
-
+const Rdseed = OsEntropy::new();
 use {Protocol, TlsAcceptorBuilder, TlsConnectorBuilder};
 
 #[derive(Debug)]
