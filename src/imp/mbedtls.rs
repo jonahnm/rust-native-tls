@@ -16,7 +16,7 @@ use std::error;
 use std::fmt::{self, Debug};
 use std::io;
 use std::sync::Arc;
-const Rdseed = OsEntropy::new();
+let mut Rdseed = OsEntropy::new();
 use {Protocol, TlsAcceptorBuilder, TlsConnectorBuilder};
 
 #[derive(Debug)]
