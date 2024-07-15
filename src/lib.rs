@@ -112,14 +112,14 @@ use std::result;
     target_os = "macos",
     target_os = "windows",
     target_os = "ios",
-    target_env = "sgx"
+    target_os = "espidf"
 )))]
 #[macro_use]
 extern crate log;
 #[cfg(any(target_os = "macos", target_os = "ios"))]
 #[path = "imp/security_framework.rs"]
 mod imp;
-#[cfg(all(target_os = "windows", not(target_env = "sgx")))]
+#[cfg(all(target_os = "windows", not(target_os = "espidf")))]
 #[path = "imp/schannel.rs"]
 mod imp;
 #[cfg(not(any(
@@ -127,11 +127,11 @@ mod imp;
     target_os = "windows",
     target_os = "ios",
     target_os = "espidf",
-    target_env = "sgx"
+    target_os = "espidf"
 )))]
 #[path = "imp/openssl.rs"]
 mod imp;
-#[cfg(target_env = "sgx")]
+#[cfg(target_os = "espidf")]
 #[path = "imp/mbedtls.rs"]
 mod imp;
 
