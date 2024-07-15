@@ -3,7 +3,7 @@ extern crate mbedtls;
 use self::mbedtls::alloc::{Box as MbedtlsBox, List as MbedtlsList};
 use self::mbedtls::hash::{Md, Type as MdType};
 use self::mbedtls::pk::Pk;
-use self::mbedtls::rng::{CtrDrbg, Rdseed};
+use self::mbedtls::rng::{CtrDrbg, OsEntropy as Rdseed};
 #[cfg(feature = "alpn")]
 use self::mbedtls::ssl::config::NullTerminatedStrList;
 use self::mbedtls::ssl::config::{Endpoint, Preset, Transport};
