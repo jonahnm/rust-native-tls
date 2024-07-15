@@ -16,7 +16,6 @@ use std::error;
 use std::fmt::{self, Debug};
 use std::io;
 use std::sync::Arc;
-let mut Rdseed = OsEntropy::new();
 use {Protocol, TlsAcceptorBuilder, TlsConnectorBuilder};
 
 #[derive(Debug)]
@@ -392,7 +391,7 @@ impl TlsConnector {
         let mut config = Config::new(Endpoint::Client, Transport::Stream, Preset::Default);
 
         // Set Rng
-        let entropy = Arc::new(Rdseed);
+        let entropy = OsEntropy::new();
         let rng = Arc::new(CtrDrbg::new(entropy, None)?);
         config.set_rng(rng);
 
@@ -478,7 +477,7 @@ impl TlsAcceptor {
         let mut config = Config::new(Endpoint::Server, Transport::Stream, Preset::Default);
 
         // Set Rng
-        let entropy = Arc::new(Rdseed);
+        let entropy = OsEntropy::new();
         let rng = Arc::new(CtrDrbg::new(entropy, None)?);
         config.set_rng(rng);
 
