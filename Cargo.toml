@@ -33,7 +33,7 @@ openssl-sys = "0.9.55"
 openssl-probe = "0.1"
 
 [target.'cfg(target_os = "espidf")'.dependencies]
-esp-mbedtls = { git = "https://github.com/esp-rs/esp-mbedtls.git", features = ["std", "rdrand", "mpi_force_c_code" ], default-features = false }
+esp-mbedtls = { git = "https://github.com/esp-rs/esp-mbedtls.git", features = ["std", "rdrand" ], default-features = false }
 pkcs5 = { version = "0.7.1", features = ["alloc", "pbes2"] }
 p12 = "0.6.3"
 yasna = "0.5"
